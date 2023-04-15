@@ -1,5 +1,4 @@
-mod exercise_7_1;
-mod exercise_7_2;
+mod exercises;
 
 #[cfg(test)]
 mod tests {}
