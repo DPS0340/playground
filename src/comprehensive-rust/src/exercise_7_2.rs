@@ -2,8 +2,10 @@
 
 use core::fmt;
 
-pub fn transpose<const R: usize, const C: usize>(matrix: [[i32; R]; C]) -> [[i32; C]; R] {
-    let mut res: [[i32; C]; R] = [[0; C]; R];
+pub fn transpose<T: Default + Copy, const R: usize, const C: usize>(
+    matrix: [[T; R]; C],
+) -> [[T; C]; R] {
+    let mut res = [[T::default(); C]; R];
 
     (0..C).for_each(|j| {
         (0..R).for_each(|i| {
