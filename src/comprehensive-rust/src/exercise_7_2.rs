@@ -9,8 +9,7 @@ pub fn transpose<T: Default + Copy, const R: usize, const C: usize>(
 
     (0..C).for_each(|j| {
         (0..R).for_each(|i| {
-            let (j2, i2) = (i, j);
-            res[i][j] = matrix[i2][j2];
+            res[i][j] = matrix[j][i];
         });
     });
 
