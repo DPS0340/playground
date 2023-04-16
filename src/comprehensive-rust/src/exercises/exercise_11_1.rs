@@ -85,7 +85,7 @@ fn test() {
     let oldest_book = oldest_book.unwrap();
     assert!(
         oldest_book.eq(&alice_in_wonderland),
-        "Oldest book of library is 'Alice's Adventures in wonderland'"
+        "Oldest book of library is 'Alice's Adventures in Wonderland'"
     );
 
     assert!(library.len() == 2, "Library has two books");
