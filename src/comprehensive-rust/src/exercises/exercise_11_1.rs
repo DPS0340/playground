@@ -53,10 +53,13 @@ impl Library {
         println!("{:?}", self.books);
     }
 
-    fn oldest_book(&self) -> Option<Book> {
-        let mut sorted = self.books.clone();
-        sorted.sort_by(|a, b| a.year.cmp(&b.year));
-        sorted.first().map(|e| e.clone())
+    fn oldest_book(&self) -> Option<&Book> {
+        self.books.iter().reduce(|a, b| {
+            if a.year > b.year {
+                return b;
+            }
+            a
+        })
     }
 }
 
