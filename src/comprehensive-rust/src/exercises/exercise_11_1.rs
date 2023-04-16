@@ -53,8 +53,10 @@ impl Library {
         println!("{:?}", self.books);
     }
 
-    fn oldest_book(&self) -> Option<&Book> {
-        self.books.first()
+    fn oldest_book(&self) -> Option<Book> {
+        let mut sorted = self.books.clone();
+        sorted.sort_by(|a, b| a.year.cmp(&b.year));
+        sorted.first().map(|e| e.clone())
     }
 }
 
@@ -82,8 +84,8 @@ fn test() {
 
     let oldest_book = oldest_book.unwrap();
     assert!(
-        oldest_book.eq(&lord_of_the_rings),
-        "Oldest book of library is 'Lord of the Rings'"
+        oldest_book.eq(&alice_in_wonderland),
+        "Oldest book of library is 'Alice's Adventures in Wonderland'"
     );
 
     assert!(library.len() == 2, "Library has two books");
