@@ -1,11 +1,13 @@
+use std::cmp::min;
+
 struct Library {
     books: Vec<Book>,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 struct Book {
-    title: String,
     year: u16,
+    title: String,
 }
 
 impl Book {
@@ -54,12 +56,7 @@ impl Library {
     }
 
     fn oldest_book(&self) -> Option<&Book> {
-        self.books.iter().reduce(|a, b| {
-            if a.year > b.year {
-                return b;
-            }
-            a
-        })
+        self.books.iter().reduce(min)
     }
 }
 
@@ -88,7 +85,7 @@ fn test() {
     let oldest_book = oldest_book.unwrap();
     assert!(
         oldest_book.eq(&alice_in_wonderland),
-        "Oldest book of library is 'Alice's Adventures in Wonderland'"
+        "Oldest book of library is 'Alice's Adventures in wonderland'"
     );
 
     assert!(library.len() == 2, "Library has two books");
