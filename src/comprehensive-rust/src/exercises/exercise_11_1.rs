@@ -1,5 +1,3 @@
-use std::cmp::min;
-
 struct Library {
     books: Vec<Book>,
 }
@@ -56,7 +54,7 @@ impl Library {
     }
 
     fn oldest_book(&self) -> Option<&Book> {
-        self.books.iter().reduce(min)
+        self.books.iter().min()
     }
 }
 
